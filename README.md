@@ -3,6 +3,8 @@
 ## 🚀 Quick Start
 
 ### **Run the application with Docker:**
+Clone the repository and go to task-tracker (root) folder and run the following command in cmd
+
 ```bash
 docker-compose up --build
 ```
