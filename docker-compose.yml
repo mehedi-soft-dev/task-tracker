@@ -4,7 +4,7 @@ services:
   # PostgreSQL Database
   postgres:
     image: postgres:15
-    container_name: tasktracker-db-mehedi
+    container_name: db-tasktracker-mhr
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-admin}
@@ -28,7 +28,7 @@ services:
     build:
       context: ./src/backend/TaskTrackerApi
       dockerfile: Dockerfile
-    container_name: tasktracker-backend-mehedi
+    container_name: backend-tasktracker-mhr
     restart: unless-stopped
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
@@ -55,7 +55,7 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_ENDPOINT: ${REACT_APP_API_ENDPOINT:-http://localhost:2900/graphql}
-    container_name: tasktracker-frontend-mehedi
+    container_name: frontend-tasktracker-mhr
     restart: unless-stopped
     environment:
       REACT_APP_API_ENDPOINT: ${REACT_APP_API_ENDPOINT:-http://localhost:2900/graphql}
