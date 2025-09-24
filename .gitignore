@@ -428,4 +428,5 @@ FodyWeavers.xsd
 *.msp
 
 #Claude 
+.claude
 .claude/*

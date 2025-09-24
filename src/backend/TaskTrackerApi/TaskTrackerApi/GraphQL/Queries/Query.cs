@@ -10,7 +10,7 @@ public class Query
     [UseFiltering]
     [UseSorting]
     public IQueryable<TaskItem> GetAllTasks([Service] AppDbContext context)
-        => context.TaskItems;
+        => context.TaskItems.OrderByDescending(t => t.CreatedAt);
 
     public async Task<TaskItem?> GetTaskById(
         Guid id,
