@@ -6,7 +6,7 @@
 Clone the repository and go to task-tracker (root) folder and run the following command in cmd
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 
 ---
