@@ -33,6 +33,18 @@ var app = builder.Build();
 // Configure middleware
 app.UseCors("AllowAll");
 
+// Map root endpoint with welcome message
+app.MapGet("/", () => Results.Json(new
+{
+    message = "Welcome to Task Tracker API",
+    graphql = "Please visit /graphql for the GraphQL playground",
+    endpoints = new
+    {
+        graphql = "/graphql",
+        graphql_playground = "/graphql"
+    }
+}));
+
 // Map GraphQL endpoint
 app.MapGraphQL();
 
