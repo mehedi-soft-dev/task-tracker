@@ -6,6 +6,7 @@ services:
     image: postgres:15
     container_name: db-tasktracker-mhr
     restart: unless-stopped
+    command: -p 5439
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456!}
@@ -18,7 +19,7 @@ services:
     networks:
       - tasktracker-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d ${POSTGRES_DB:-TaskTrackerDB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -33,7 +34,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
       ASPNETCORE_URLS: http://+:80
-      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=${POSTGRES_DB:-TaskTrackerDB};Username=${POSTGRES_USER:-admin};Password=${POSTGRES_PASSWORD:-123456!}"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5439;Database=${POSTGRES_DB:-TaskTrackerDB};Username=${POSTGRES_USER:-admin};Password=${POSTGRES_PASSWORD:-123456!}"
     ports:
       - "${BACKEND_PORT:-2900}:80"
     depends_on:
