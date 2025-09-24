@@ -131,7 +131,3 @@ Through this project, I learned that:
 5. Phase-based verification prevents accumulation of technical debt
 
 ---
-
-## 📝 License
-
-This project was developed using AI-assisted programming with Claude (Anthropic) following Specification-Driven Development methodology.
